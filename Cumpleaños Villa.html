@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Feliz Cumpleaños Juan Pablo!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            text-align: center;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        header {
+            padding: 40px 0;
+            position: relative;
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+            animation: tituloAnim 2s ease infinite;
+            color: #FFD700;
+        }
+
+        @keyframes tituloAnim {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .birthday-boy {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            display: inline-block;
+            padding: 15px 40px;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+            color: #FFD700;
+            font-weight: bold;
+        }
+
+        .photo-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .photo-frame {
+            width: 300px;
+            height: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            position: relative;
+            transition: transform 0.5s, box-shadow 0.5s;
+            border: 5px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .photo-frame:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            z-index: 10;
+            border-color: rgba(255, 215, 0, 0.5);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .photo-frame:hover img {
+            transform: scale(1.1);
+        }
+
+        .message {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            margin: 40px auto;
+            max-width: 800px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .message p {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .cake-container {
+            margin: 40px 0;
+            position: relative;
+            height: 200px;
+        }
+
+        .cake {
+            width: 150px;
+            height: 120px;
+            background: #f9c7c2;
+            border-radius: 10px 10px 0 0;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .cake:before {
+            content: "";
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            background: #ff8a8a;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .candle {
+            width: 10px;
+            height: 40px;
+            background: #fff;
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 5px;
+        }
+
+        .flame {
+            width: 20px;
+            height: 40px;
+            background: #ffde7a;
+            border-radius: 50% 50% 20% 20%;
+            position: absolute;
+            top: -90px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 20px #ff9900, 0 0 40px #ff9900;
+            animation: flameAnim 1s ease-in-out infinite alternate;
+        }
+
+        @keyframes flameAnim {
+            from {
+                transform: translateX(-50%) scale(1);
+            }
+
+            to {
+                transform: translateX(-50%) scale(1.1) translateY(-5px);
+            }
+        }
+
+        /* Confeti que cae desde arriba */
+        .confetti {
+            position: fixed;
+            width: 15px;
+            height: 15px;
+            opacity: 0;
+            top: -20px;
+            animation: confettiFall 5s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                opacity: 1;
+                transform: translateY(0) rotate(0deg);
+            }
+
+            10% {
+                opacity: 0.8;
+            }
+
+            90% {
+                opacity: 0.8;
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(100vh) rotate(720deg);
+            }
+        }
+
+        .balloon {
+            position: absolute;
+            width: 50px;
+            height: 60px;
+            border-radius: 50%;
+            animation: balloonAnim 15s ease-in infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes balloonAnim {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.8;
+            }
+
+            90% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(-100vh) rotate(20deg);
+                opacity: 0;
+            }
+        }
+
+        .music-player {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 30px auto;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .music-player h3 {
+            font-size: 1.5rem;
+            color: #FFD700;
+            margin-bottom: 10px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn {
+            background: rgba(255, 215, 0, 0.8);
+            color: #1a2a6c;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn:hover {
+            background: #FFD700;
+            transform: scale(1.05);
+        }
+
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        footer {
+            margin-top: 60px;
+            padding: 20px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+
+            .birthday-boy {
+                font-size: 1.8rem;
+                padding: 10px 25px;
+            }
+
+            .photo-frame {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .message {
+                padding: 25px;
+            }
+
+            .message p {
+                font-size: 1.1rem;
+            }
+        }
+
+        .video-container {
+            margin: 30px auto;
+            max-width: 800px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        #player {
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+            /* Relación de aspecto 16:9 */
+            position: relative;
+            background: #000;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        #player iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>¡Feliz Cumpleaños!</h1>
+            <div class="birthday-boy">Juan Pablo Villamil Cortez</div>
+        </header>
+
+        <div class="photo-gallery">
+            <div class="photo-frame">
+                <img src="https://i.pinimg.com/736x/14/ee/7a/14ee7a44f228adec02696e6b741b0618.jpg" alt="Celebración">
+            </div>
+            <div class="photo-frame">
+                <img src="https://i.pinimg.com/1200x/b8/98/97/b8989747d3063a758641adba0eae15b5.jpg" alt="Fiesta">
+            </div>
+            <div class="photo-frame">
+                <img src="https://files.lafm.com.co/assets/public/styles/twitter/public/2020-03/3_0_0_0.jpg.webp?itok=vFQpLt0A"
+                    alt="Cumpleaños">
+            </div>
+        </div>
+
+        <div class="message">
+            <p>¡Querido Juan Pablo!</p>
+            <p>En este día tan especial, queremos desearte un feliz cumpleaños lleno de alegría, amor y muchas
+                bendiciones. Que todos tus sueños se hagan realidad y que este nuevo año de vida te traiga éxito y
+                felicidad.</p>
+            <p>Eres una persona increíble y mereces lo mejor, el mejor tocando el banjo. ¡Disfruta tu día al máximo!</p>
+            <p>Con cariño,<br>tus fans.</p>
+        </div>
+
+        <div class="cake-container">
+            <div class="cake">
+                <div class="candle"></div>
+                <div class="flame"></div>
+            </div>
+        </div>
+        <footer>
+            <p>© 2023 - Una página especial para Juan Pablo</p>
+        </footer>
+    </div>
+
+    <script>
+        // Crear confeti que cae desde arriba
+        function createConfetti() {
+            const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff', '#FFD700'];
+            const shapes = ['circle', 'square', 'triangle', 'line'];
+
+            for (let i = 0; i < 150; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+
+                // Posición horizontal aleatoria
+                confetti.style.left = Math.random() * 100 + 'vw';
+
+                // Color aleatorio
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+                // Tamaño aleatorio
+                const size = Math.random() * 15 + 5;
+                confetti.style.width = size + 'px';
+                confetti.style.height = size + 'px';
+
+                // Retraso aleatorio en la animación
+                confetti.style.animationDelay = Math.random() * 5 + 's';
+
+                // Duración aleatoria de la animación
+                confetti.style.animationDuration = (Math.random() * 3 + 3) + 's';
+
+                // Forma aleatoria
+                const shape = shapes[Math.floor(Math.random() * shapes.length)];
+                if (shape === 'circle') {
+                    confetti.style.borderRadius = '50%';
+                } else if (shape === 'triangle') {
+                    confetti.style.width = '0';
+                    confetti.style.height = '0';
+                    confetti.style.backgroundColor = 'transparent';
+                    confetti.style.borderLeft = size / 2 + 'px solid transparent';
+                    confetti.style.borderRight = size / 2 + 'px solid transparent';
+                    confetti.style.borderBottom = size + 'px solid ' + colors[Math.floor(Math.random() * colors.length)];
+                } else if (shape === 'line') {
+                    confetti.style.width = size / 3 + 'px';
+                    confetti.style.height = size + 'px';
+                }
+
+                document.body.appendChild(confetti);
+            }
+        }
+
+        // Crear globos
+        function createBalloons() {
+            const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+
+            for (let i = 0; i < 20; i++) {
+                const balloon = document.createElement('div');
+                balloon.className = 'balloon';
+                balloon.style.left = Math.random() * 100 + 'vw';
+                balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                balloon.style.animationDelay = Math.random() * 15 + 's';
+                document.body.appendChild(balloon);
+            }
+        }
+
+
+        // Inicializar efectos cuando la página cargue
+        window.onload = function () {
+            createConfetti();
+            createBalloons();
+            initMusic();
+
+            // Reproducir música de cumpleaños después de 2 segundos
+            setTimeout(() => {
+                if (audio) {
+                    audio.play().catch(e => console.log("La reproducción automática de audio está bloqueada. Haz clic en 'Reproducir'."));
+                }
+            }, 2000);
+
+            // Reproducir al hacer clic en cualquier lugar si estaba bloqueado
+            document.body.addEventListener('click', function () {
+                if (audio) {
+                    audio.play().catch(e => console.log("No se pudo reproducir el audio"));
+                }
+            }, { once: true });
+        };
+    </script>
+</body>
+
+</html>
